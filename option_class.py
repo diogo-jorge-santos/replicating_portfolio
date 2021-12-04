@@ -68,7 +68,7 @@ class Short_european_call_leland(Option_fixed_time):
 
 
 @njit(parallel=True)
-def frontier_parallel(price_0, actual_mean, actual_vol, interest_rate, expire_date, strike_price, transaction_cost, n_paths):
+def risk_return_parallel(price_0, actual_mean, actual_vol, interest_rate, expire_date, strike_price, transaction_cost, n_paths):
     list = np.empty(40)
     list_sd = np.empty(40)
 
@@ -97,7 +97,7 @@ def frontier_parallel(price_0, actual_mean, actual_vol, interest_rate, expire_da
     return list, list_sd, list_1, list_1_sd
 
 
-def frontier_stable(price_0, actual_mean, actual_vol, interest_rate, expire_date, strike_price, transaction_cost, n_paths):
+def risk_return_stable(price_0, actual_mean, actual_vol, interest_rate, expire_date, strike_price, transaction_cost, n_paths):
     list = np.empty(40)
     list_sd = np.empty(40)
 
