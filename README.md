@@ -6,7 +6,7 @@ This repository tries to implement a framework to predict hedging errors when he
 
 -/stable_tools/replicating_fixed_time.py -> base class for replicating fixed time strategies declaration;
 
--/test_tools/. -> scripts used to test some features of numba and to test some of the design choices made;
+-/test_tools/. -> scripts used to test some numba's features and to test some alternatives of the design choices made;
 
 -/option_class.py -> implementation of some methods using the base class to test some results form Yet Another Note on the Leland’s Option Hedging Strategy with Transaction Costs Valeri I. Zakamouline
 
