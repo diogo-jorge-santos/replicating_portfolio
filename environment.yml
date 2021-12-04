@@ -1,0 +1,8 @@
+
+name: Master_Thesis_ENV
+dependencies:
+  - python=3.8
+  - numpy
+  - scipy
+  - numba
+  - matplotlib
