@@ -89,7 +89,7 @@ class Option_fixed_time():
             path[self.n_steps] = path[self.n_steps-1]*np.exp(
                 (self.actual_mean-0.5*self.actual_vol**2)*self.delta_t+self.actual_vol*np.sqrt(self.delta_t)*np.random.normal())
 
-            # Any of the papers described how transaction cost are computed at expire date, so I've assumed by now that arent TC at expire
+            # Any of the papers described how transaction cost are computed at expire date, so I've assumed for now that arent TC at expire
             # hedging error=last value in bank account + interest + last quantity of stocks* new price - payoff of the option
             error[j] = q[self.n_steps-1]*compound+d[self.n_steps-1] * \
                 path[self.n_steps] - self.exercise(path[self.n_steps])
