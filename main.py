@@ -1,6 +1,6 @@
 
 
-from option_class import Short_european_call_black_sholes, Short_european_call_leland, frontier_parallel
+from option_class import Short_european_call_black_sholes, Short_european_call_leland, risk_return_parallel
 import numpy as np
 import matplotlib.pyplot as plt
 
