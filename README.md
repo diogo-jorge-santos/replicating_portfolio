@@ -18,9 +18,9 @@ Setup:
 conda env create -f environment.yml
 
 Usage:
-To activate the enviorment and use the scripts:
--conda activate Master_Thesis_ENV
--python3 main.py
+-To activate the enviorment and use the scripts:
+  -conda activate Master_Thesis_ENV
+  -python3 main.py
 
 To do list:
 - (important) fix bug that makes the results slightly off when comparing to the results from the paper (even when using large samples and considering the confidence intervals over the obtained results);
