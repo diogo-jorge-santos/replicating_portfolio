@@ -49,7 +49,7 @@ figure 1 (a)
 
 time0 = time.time()
 
-black_sholes_mean, black_sholes_sd, leland_mean, leland_sd = frontier_parallel(
+black_sholes_mean, black_sholes_sd, leland_mean, leland_sd = risk_return_parallel(
     100.0, 0.05, 0.25, 0.05, 1, 100.0, 0.01, 200000)
 
 print(time.time()-time0)
