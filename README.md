@@ -18,7 +18,7 @@ Setup:
 conda env create -f environment.yml
 
 Usage:
--To activate the enviorment and use the scripts:
+- To activate the enviorment and use the scripts:
   -conda activate Master_Thesis_ENV
   -python3 main.py
 
