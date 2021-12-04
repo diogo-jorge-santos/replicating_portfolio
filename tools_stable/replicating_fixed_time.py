@@ -1,8 +1,6 @@
 import numpy as np
 from numba import double,int32
 
-def func():
-    pass
 spec = [
     ('price_0', double),
     ('actual_mean', double),
