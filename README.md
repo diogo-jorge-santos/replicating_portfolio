@@ -1,10 +1,10 @@
 # replicating_portfolio
 
-This repository tries to implement a framework to predict hedging errors when hedging any option contract without making any assumptions under the strategy to be used. The main use of this repository in the moment is to replicate results from research papers.
+This repository tries to implement a framework to predict hedging errors when hedging a option contract without making assumptions about hte contract or strategy to be used.
 
 -/stable_tools/misc.py -> miscellaneous methods;
 
--/stable_tools/replicating_fixed_time.py -> base class for replicating fixed time strategies declaration;
+-/stable_tools/replicating_fixed_time.py -> base class for replicating fixed time strategies;
 
 -/test_tools/. -> scripts used to test some numba's features and to test some alternatives of the design choices made;
 
@@ -26,7 +26,7 @@ To do list:
 - (important) fix bug that makes the results slightly off when comparing to the results from the paper (even when using large samples and considering the confidence intervals over the obtained results);
 - add a method in the base class to allow "delta" to have access to previous computed deltas (to test Emmanuel L'epinette. Modified Leland’s Strategy).
 - generalize the risk-return test function;
-- create a new class to test moved-based hedging strategies (instead of fixed interval ones);
+- create a new class to test moved-based hedging strategies;
 
 
 
