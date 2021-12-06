@@ -25,7 +25,6 @@ Usage:
 To do list:
 - (important) fix bug that makes the results slightly off when comparing to the results from the paper (even when using large samples and considering the confidence intervals over the obtained results);
 - add a method in the base class to allow "delta" to have access to previous computed deltas (to test Emmanuel Lépinette. Modified Leland’s Strategy).
-- add a method in order to return, in combination with the hedging error, the final stock price at expire date (to test Yet Another Note on the Leland’s OptionHedging Strategy with Transaction Costs Valeri I. Zakamouline table 3);
 - generalize the risk-return test function;
 - create a new class to test moved-based hedging strategies (instead of fixed interval ones);
 
