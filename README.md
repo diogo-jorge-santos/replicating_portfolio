@@ -8,7 +8,7 @@ This repository tries to implement a framework to predict hedging errors when he
 
 -/test_tools/. -> scripts used to test some numba's features and to test some alternatives of the design choices made;
 
--/option_class.py -> implementation of some methods using the base class to test some results form Yet Another Note on the Leland’s Option Hedging Strategy with Transaction Costs Valeri I. Zakamouline
+-/option_class.py -> implementation of some methods using the base class to test some results from Yet Another Note on the Leland’s Option Hedging Strategy with Transaction Costs Valeri I. Zakamouline
 
 -/main.py -> usage of the methods implemented in option_class.py 
 
