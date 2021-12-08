@@ -191,7 +191,7 @@ if __name__ == "__main__":
 '''
 conclusions:- the oop version is slightly slower to the functional version (9s vs 7.5s for 2 options, not sufficiently faster to justify the loss in abstraction when using this approach)
             - using parallel loops inside the replicating function does not yield significant speedups (7.5s vs 7.2s for 2 options)
-            - using ffast math compiler flag (breaks strict IEEE compliance and SIMD support) in the replicating functions does not yield significant speedups (7.5s vs 7.2s for 2 options)
+            - using ffast math compiler flag (breaks strict IEEE compliance and adds SIMD support) in the replicating functions does not yield significant speedups (7.5s vs 7.2s for 2 options)
             - using a parallel loop when estimating a batch of options yield acceptable (and significant) speedups, (+/- 200s no parallell vs 70s parallel vs 88s for oop w/parallel for 40 options) although not near the expected "perfect speedup" of 8 due to poor load balancing 
 
 '''
