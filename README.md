@@ -14,7 +14,7 @@ This repository tries to implement a framework to predict hedging errors when he
 
 Setup:
 - install miniconda/anaconda python distribution.
--To setup an enviorment for this repository use open command line in the repository folder and:
+- To setup an enviorment for this repository use open command line in the repository folder and:
 conda env create -f environment.yml
 
 Usage:
