@@ -54,7 +54,7 @@ class Option_fixed_time():
             Some notes about this function:
             -I've assumed continuos interest (some of the papers use anualized instead: one has to do the necessary transformations)
             -I've also written with the conventions that are used to hedge a short option (i.e positive delta, negative payoff at exercise and positive cf at t=0 from the sold option
-            one has to do the apropriate changes in those methods (i.e. change the signal of the return) in order to replicate a long option);
+            one has to do the apropriate changes in those methods (i.e. change the signal of each method) in order to replicate a long option);
         '''
 
         # hedging error
