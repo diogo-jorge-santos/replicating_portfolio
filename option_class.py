@@ -4,7 +4,7 @@ from numba import njit, prange, double
 from tools_stable.misc import normcdf
 from tools_stable.replicating_fixed_time import Option_fixed_time, spec
 
-# hedging of a short european call, using black-scholes strategy and price
+# hedging a short european call, using black-scholes strategy and price
 @jitclass(spec)
 class Short_european_call_black_sholes(Option_fixed_time):
 
@@ -31,7 +31,7 @@ class Short_european_call_black_sholes(Option_fixed_time):
 
 spec1 = [('modified_vol', double)]
 
-# hedging of a short european call, using black-scholes price and leland strategy
+# hedging a short european call, using black-scholes price and leland strategy
 @jitclass(spec+spec1)
 class Short_european_call_leland(Option_fixed_time):
 
