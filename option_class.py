@@ -1,12 +1,14 @@
 import numpy as np
 from numba.experimental import jitclass
-from numba import njit, prange, double
+from numba import  double
 from tools_stable.misc import normcdf
-from tools_stable.replicating_fixed_time import Option_fixed_time, spec
+from tools_stable.replicating_fixed_time import Option_fixed_time, spec_time
+from tools_stable.replicating_fixed_bandwidth import Option_fixed_bandwidth, spec_band
+
 
 # hedging a short european call, using black-scholes strategy and price
-@jitclass(spec)
-class Short_european_call_black_sholes(Option_fixed_time):
+@jitclass(spec_time)
+class Short_european_call_black_sholes_fixed_time(Option_fixed_time):
 
     def delta(self, s, t):
         d1 = (np.log(s/self.strike_price) + (self.interest_rate + (self.actual_vol**2)/2)
@@ -32,8 +34,8 @@ class Short_european_call_black_sholes(Option_fixed_time):
 spec1 = [('modified_vol', double)]
 
 # hedging a short european call, using black-scholes price and leland strategy
-@jitclass(spec+spec1)
-class Short_european_call_leland(Option_fixed_time):
+@jitclass(spec_time+spec1)
+class Short_european_call_leland_fixed_time(Option_fixed_time):
 
     __init__A = Option_fixed_time.__init__
 
@@ -66,61 +68,28 @@ class Short_european_call_leland(Option_fixed_time):
     def exercise(self, s):
         return max(s-self.strike_price, 0)
 
+@jitclass(spec_band)
+class Short_european_call_black_sholes_fixed_bandwidth(Option_fixed_bandwidth):
 
-@njit(parallel=True)
-def risk_return_parallel(price_0, actual_mean, actual_vol, interest_rate, expire_date, strike_price, transaction_cost, n_paths):
-    list = np.empty(40)
-    list_sd = np.empty(40)
+    def delta(self, s, t):
+        d1 = (np.log(s/self.strike_price) + (self.interest_rate + (self.actual_vol**2)/2)
+              * (self.expire_date-t)) / (self.actual_vol*np.sqrt(self.expire_date-t))
 
-    list_1 = np.empty(40)
-    list_1_sd = np.empty(40)
+        return normcdf(d1)
 
-    for i in prange(1, 41):
+    def pricing(self, s, t):
+        d1 = (np.log(s/self.strike_price) + (self.interest_rate + (self.actual_vol**2)/2)
+              * (self.expire_date-t)) / (self.actual_vol*np.sqrt(self.expire_date-t))
 
-        delta_t = int(i*5)
+        d2 = d1-self.actual_vol*np.sqrt(self.expire_date-t)
 
-        option = Short_european_call_black_sholes(
-            price_0, actual_mean, actual_vol, interest_rate, expire_date, strike_price, transaction_cost, delta_t, n_paths)
-        option1 = Short_european_call_leland(
-            price_0, actual_mean, actual_vol, interest_rate, expire_date, strike_price, transaction_cost, delta_t, n_paths)
+        c0 = s*normcdf(d1)-self.strike_price * \
+            np.exp(-self.interest_rate*(self.expire_date-t))*normcdf(d2)
 
-        result = option.replicating_error()
+        return c0
 
-        result1 = option1.replicating_error()
-
-        list[i-1] = (np.mean(result))
-        list_sd[i-1] = (np.std(result))
-        list_1[i-1] = (np.mean(result1))
-        list_1_sd[i-1] = (np.std(result1))
-        print(delta_t)
-
-    return list, list_sd, list_1, list_1_sd
+    def exercise(self, s):
+        return max(s-self.strike_price, 0)
 
 
-def risk_return_stable(price_0, actual_mean, actual_vol, interest_rate, expire_date, strike_price, transaction_cost, n_paths):
-    list = np.empty(40)
-    list_sd = np.empty(40)
 
-    list_1 = np.empty(40)
-    list_1_sd = np.empty(40)
-
-    for i in prange(1, 41):
-
-        delta_t = int(i*5)
-
-        option = Short_european_call_black_sholes(
-            price_0, actual_mean, actual_vol, interest_rate, expire_date, strike_price, transaction_cost, delta_t, n_paths)
-        option1 = Short_european_call_leland(
-            price_0, actual_mean, actual_vol, interest_rate, expire_date, strike_price, transaction_cost, delta_t, n_paths)
-
-        result = option.replicating_error()
-
-        result1 = option1.replicating_error()
-
-        list[i-1] = (np.mean(result))
-        list_sd[i-1] = (np.std(result))
-        list_1[i-1] = (np.mean(result1))
-        list_1_sd[i-1] = (np.std(result1))
-        print(delta_t)
-
-    return list, list_sd, list_1, list_1_sd
