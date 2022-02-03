@@ -1,6 +1,6 @@
 # replicating_portfolio
 
-This repository tries to implement a framework to predict hedging errors when hedging a option contract without making assumptions about the contract or strategy used.
+In this repository implemented a framework to predict hedging errors when hedging a option contract without making assumptions about the contract or strategy used.
 
 -/stable_tools/misc.py -> miscellaneous methods;
 
