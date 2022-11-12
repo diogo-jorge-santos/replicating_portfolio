@@ -1,32 +1,36 @@
 # replicating_portfolio
 
-In this repository implemented a framework to predict hedging errors when hedging a option contract without making assumptions about the contract or strategy used.
 
--/stable_tools/misc.py -> miscellaneous methods;
+In this repository it is implemented a framework to predict and study the hedging costs and error of a derivative product when dynamically hedging a derivative contract.
 
--/stable_tools/replicating_fixed_time.py -> base class for replicating fixed time strategies;
+-/stable_tools/misc.py -> miscellaneous methods and constants;
 
--/stable_tools/replicating_fixed_bandwidth.py -> base class for replicating fixed bandwidth strategies;
+-/stable_tools/replicating_barrier.py -> base class to implement barrier options;
 
--/test_tools/. -> scripts used to test some numba's features and to test some alternative design choices;
+-/stable_tools/replicating_vol.py -> base class to implement european type options with stocastic volatility;
 
--/option_class.py -> implementation of some methods using the base classes to test some results from Yet Another Note on the Leland’s Option Hedging Strategy with Transaction Costs Valeri I. Zakamouline and Efficient Analytic Approximation of the Optimal Hedging Strategy for a European Call Option with Transaction Costs
+-/stable_tools/replicating_seperate.py -> base class for implement european type options with constant volatility;
 
+-/stable_tools/class_barrier_call.py and class_barrier_put.py-> class definition for Up and out calls and Down and In puts.
 
--/main.py -> usage of the methods implemented in option_class.py 
+-/stable_tools/class_vol_heston -> class definition for european call using Heston model;
+
+-/stable_tools/class_seperate-> class definition for european call using Black-Shoules formula;
+
+-main_*.py -> scipts used to get the results presented in the PowerPoint presentations and the Thesis document.
+
 
 Setup:
 - install miniconda/anaconda python distribution.
-- To setup an enviorment for this repository use open command line in the repository folder and:
-conda env create -f environment.yml
+- To setup an enviorment to use this repository: conda env create -f environment.yml
+- For the code be able to log the computed results use: python setup.py
+    
+
 
 Usage:
-- To activate the enviorment and use the scripts:
+- To activate the enviorment and use the scripts to generate the results for each topic:
   - conda activate Master_Thesis_ENV
-  - python main.py
-
-Note:
-- the results are still slightly off when comparing to the references (even when using large samples and considering the confidence intervals over the obtained results);
+  - python main_*.py
 
 
 
