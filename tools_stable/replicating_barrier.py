@@ -299,10 +299,4 @@ class Option_barrier_in():
                 (np.exp(-self.interest_rate * self.delta_t * i) * gamma_array[:, i])**2)
 
         return expected_abs,expected_power,sd_abs,sd_power
-'''
-def gamma(self, s, t):
-        pass
 
-    def test_gamma(self):
-        pass
-'''
