@@ -50,7 +50,6 @@ class Up_and_out_call(Option_barrier_in):
         s: spot price
         t: time to maturity
 
-        (file://dfs-eu.euro.net.intra/ACTIVITIES/PORTUGAL/CIB/GROUPS/RISK%20Lisbon%20Hub/CIB%20GM/_users/Diogo/EXOTIC_OPTIONS.pdf)
         '''
         if barrier_in or s > self.barrier_price:
             return 0.0
