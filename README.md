@@ -17,7 +17,7 @@ In this repository it is implemented a framework to predict and study the hedgin
 
 -/stable_tools/class_seperate-> class definition for european call using Black-Shoules formula;
 
--main_*.py -> scipts used to get the results presented in the PowerPoint presentations and the Thesis document.
+-main_*.py -> scipts used to get the results presented in the Thesis document.
 
 
 Setup:
